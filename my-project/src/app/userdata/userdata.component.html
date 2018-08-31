@@ -1,0 +1,76 @@
+
+<div>
+<h3 style="height: 50px; width: 100%; background-color: #4682B4;"><span style="color: white; font-family: cursive;align-self: center; margin-left: 40%;">User  Action Portal</span></h3></div>
+<div style="background-color:lightblue;">
+
+
+<h3 *ngIf="articleIdToUpdate; else create"> 
+   Update user for Id: {{articleIdToUpdate}}
+</h3>
+<ng-template #create>
+   
+</ng-template>
+<div style="background-color:lightblue; margin-left: 10px;margin-right: 10px; margin-top: 0px; ">
+ <form [formGroup]="articleForm" (ngSubmit)="onArticleFormSubmit()">
+  <table class="table">
+    <tr><td>Enter Your Name</td><td><input formControlName="title" class="form-control">
+	       <label *ngIf="articleForm.get('title').invalid && processValidation" [ngClass] = "'error'"> User Name is required. </label>
+   	</td></tr>
+    <tr><td>Enter Your Email</td><td><input formControlName="category" class="form-control">
+	       <label *ngIf="articleForm.get('category').invalid && processValidation" [ngClass] = "'error'"> Email is required. </label>
+	</td></tr>	
+    <tr><td colspan="2">
+	    <button *ngIf="!articleIdToUpdate" class="btn btn-primary">Add User Detail</button>  
+		<button *ngIf="articleIdToUpdate" class="btn btn-primary">UPDATE</button>  
+	    <button (click)="backToCreateArticle()" *ngIf="articleIdToUpdate" class="btn btn-primary">Go Back</button>  
+	</td></tr>
+  </table>
+ </form> 
+ <br/>
+ <div *ngIf="statusCode; else processing">
+   <div *ngIf="statusCode === 201" [ngClass] = "'success'">
+	    User Record added successfully.
+   </div>   
+   <div *ngIf="statusCode === 409" [ngClass] = "'success'">
+        User  already exists.
+   </div>   	
+   <div *ngIf="statusCode === 200" [ngClass] = "'success'">
+        User Record updated successfully.
+   </div>   	      
+   <div *ngIf="statusCode === 204" [ngClass] = "'success'">
+        User Data deleted successfully.
+   </div>   	   
+   <div *ngIf="statusCode === 500" [ngClass] = "'error'">
+        Internal Server Error.
+   </div>	
+ </div>
+
+</div>
+</div>
+<div style="background-color: #ADD8E6;">
+<div>
+<h3 style="height: 50px; width: 100%; background-color: #4682B4;"><span style="color: white; font-family: cursive;align-self: center; margin-left: 40%;">List Of User</span></h3></div>
+
+
+ 
+  <div style="background-color: #ADD8E6;" >
+  <div *ngFor="let article of allArticles" style="margin-left: 600px;" >
+       <div class="row">
+    
+     <div style="margin-top: 10px; border: 5px; border-color: black; margin-left: 50px;"><img src="../assets/images/bharat.jpg"  width="100" height="100" alt="Image" style="margin-left: 50px" /><br>Name:-<span style="color: blue; font-family: cursive; font-size: 20px;">{{article.title}}</span><br>
+      Email ID:-{{article.category}}<br>
+     
+
+  <button type="button" (click)="loadArticleToEdit(article.id)"  class="btn btn-primary">Update</button> 
+  <button type="button" (click)="deleteArticle(article.id)" class="btn btn-danger">Delete</button>
+  <hr>
+
+  </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+
+

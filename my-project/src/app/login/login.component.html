@@ -1,0 +1,50 @@
+<section class="section-appointment" style="background-color: black;">
+
+        <div class="container wow fadeInUp">
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 hidden-sm hidden-xs"> 
+                      <br><br><br>
+                    <figure class="loginImg">
+                        <img src="../assets/images/login3.gif" alt="Login Image">
+                    </figure>
+                </div>
+
+               
+
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"> 
+
+                    <div class="appointment-form-wrapper text-center clearfix">
+                        <h3 class="join-heading">LOGIN PORTAL</h3>
+                        <form [formGroup]="loginForm" class="appoinment-form"  name="myForm" > 
+                          
+                            <div class="form-group col-md-12">
+                                <input id="your_email" class="form-control" placeholder="User_id*" type="email"  [(ngModel)]="model.username" name="username" formControlName="username" >
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input id="password" class="form-control" placeholder="Password*" type="password" [(ngModel)]="model.password" name="password" 
+                                formControlName="password" (click)="show()">
+                            </div>
+                                                                                 
+
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <input type="submit"  (click)="loginUser()" id="submit" class="btn-submit" value="Login" type="submit"/>
+                                    <span>User_ID:-bharat and  Password:-bharat</span>
+                                
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                               
+                            </div>
+
+                        </form>
+
+                    </div> <!-- end .appointment-form-wrapper  -->
+
+                </div> <!--  end .col-lg-6 -->
+
+            </div> <!--  end .row  -->
+
+        </div> <!--  end .container -->
+
+    </section>  <!--  end .appointment-section  -->

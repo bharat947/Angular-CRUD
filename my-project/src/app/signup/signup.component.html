@@ -1,0 +1,86 @@
+
+<div>
+<h3 style="height: 50px; width: 100%; background-color: #4682B4;"><span style="color: white; font-family: cursive;align-self: center; margin-left: 40%;">User  Registration Portal</span></h3></div>
+<div style="background-color:lightblue;">
+
+
+<h3 *ngIf="articleIdToUpdate; else create"> 
+   Update user for Id: {{articleIdToUpdate}}
+</h3>
+<ng-template #create>
+   
+</ng-template>
+<div style="background-color:black; margin-left: 10px;margin-right: 10px; margin-top: 0px; ">
+<section class="section-appointment" >
+
+        <div class="container wow fadeInUp">
+
+            <div class="row">
+
+                  <div class="col-lg-6 col-md-6 hidden-sm hidden-xs"> 
+                      <br><br><br>
+                    <figure class="loginImg">
+                        <img src="../assets/images/login3.gif" alt="Login Image">
+                    </figure>
+                </div>
+
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"> 
+
+                    <div class="appointment-form-wrapper text-center clearfix">
+                        <h3 class="join-heading">REGISTRAION PORTAL</h3>
+                       
+                        <form [formGroup]="articleForm" (ngSubmit)="onArticleFormSubmit()">
+  <table class="table">
+    <tr><td>Enter Your Name</td><td><input formControlName="title" class="form-control">
+           <label *ngIf="articleForm.get('title').invalid && processValidation" [ngClass] = "'error'"> User Name is required. </label>
+    </td></tr>
+    
+    <tr><td>Enter Your Email</td><td><input formControlName="category" class="form-control">
+           <label *ngIf="articleForm.get('category').invalid && processValidation" [ngClass] = "'error'"> Email is required. </label>
+    </td></tr> 
+    <tr><td>Enter Your Password</td><td><input formControlName="password" class="form-control">
+           <label *ngIf="articleForm.get('password').invalid && processValidation" [ngClass] = "'error'"> Password is required. </label>
+    </td></tr>
+    <tr><td>Enter Your Address</td><td><input formControlName="address" class="form-control">
+           <label *ngIf="articleForm.get('address').invalid && processValidation" [ngClass] = "'error'"> Address is required. </label>
+    </td></tr>
+
+    <tr><td colspan="2">
+        <button *ngIf="!articleIdToUpdate" class="btn btn-primary">Registration</button>  
+        
+    </td></tr>
+  </table>
+ </form> 
+ <div *ngIf="statusCode; else processing">
+   <div *ngIf="statusCode === 201" [ngClass] = "'success'">
+        User Registration successfully.
+   </div>   
+     
+ </div>
+
+                    </div> 
+
+                </div> 
+
+            </div> 
+
+        </div> 
+
+    </section>  
+
+
+ <br/>
+
+
+
+ 
+
+</div>
+</div>
+<div>
+
+
+
+
+
